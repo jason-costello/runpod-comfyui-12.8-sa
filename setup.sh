@@ -73,6 +73,14 @@ if [[ ! -d $COMFY/custom_nodes/ComfyUI_TensorRT ]]; then
 fi
 pip install -r "$COMFY/custom_nodes/ComfyUI_TensorRT/requirements.txt" || true
 
+pip install "huggingface_hub[cli]" hf_transfer comfy-cli civitdl
+export HF_HUB_ENABLE_HF_TRANSFER=1   # also add to entrypoint env
+
+for repo in crystools rgthree-comfy ComfyUI-KJNodes; do :; done
+git clone https://github.com/crystian/ComfyUI-Crystools "$COMFY/custom_nodes/ComfyUI-Crystools"
+git clone https://github.com/rgthree/rgthree-comfy "$COMFY/custom_nodes/rgthree-comfy"
+git clone https://github.com/kijai/ComfyUI-KJNodes "$COMFY/custom_nodes/ComfyUI-KJNodes"
+
 # ---------- Run scripts ----------
 cp /opt/templates/run_gpu.sh /opt/templates/run_cpu.sh /opt/templates/download_models.sh $WS/
 chmod +x $WS/run_gpu.sh $WS/run_cpu.sh $WS/download_models.sh

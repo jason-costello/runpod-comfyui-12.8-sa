@@ -13,7 +13,7 @@
 set -uo pipefail
 
 COMFY=/workspace/ComfyUI
-DEFAULT_MODEL_URL="https://huggingface.co/lodestones/Chroma/resolve/main/chroma-unlocked-v37.safetensors"
+DEFAULT_MODEL_URL="https://huggingface.co/lodestones/Chroma/resolve/main/chroma-unlocked-v50-annealed.safetensors"
 MODEL_URL="${MODEL_URL:-$DEFAULT_MODEL_URL}"
 MODEL_DIR="${MODEL_DIR:-$([[ $MODEL_URL == $DEFAULT_MODEL_URL ]] && echo diffusion_models || echo checkpoints)}"
 

@@ -2,7 +2,7 @@
 set -uo pipefail
 
 WS=/workspace
-
+export HF_HUB_ENABLE_HF_TRANSFER=1
 # First-run provisioning (idempotent; safe on every boot)
 /opt/setup.sh || echo "[entrypoint] setup failed, see $WS/setup.log"
 
